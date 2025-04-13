@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 70px;
+}
+
+.container h2 {
+    color: white;
+    font-size: 2em;
+}
+
+.button button {
+    flex-wrap: wrap;
+    margin-right: 10px;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    border-radius: 10px;
+    border: solid 2px #5c0a0a;
+    padding: 10px;
+    cursor: pointer;
+    color:  #5c0a0a;
+    transition: 0.4s;
+}
+.button button:hover {
+    background-color:#5c0a0a;
+    color: white;
+    border: solid 2px white;
+    transform: translateY(-8px)
+}
+

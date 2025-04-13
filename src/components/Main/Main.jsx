@@ -14,9 +14,13 @@ function Main() {
               Verba antiqua resurgent. Disce linguam imperii, et in sapientiae vestigiis ambula.
        </p>
         <p>   Découvrez la langue latine comme vous ne l’avez jamais vue : explorez des thèmes fascinants et essentiels de la société romaine — de la guerre à la politique, en passant par la sagesse et la science.</p>
-
+       
+        <Link to="/themes" className={styles.button}>
+    Explorer les thèmes
+  </Link>
       
     </main>
+    
     
     </div>
   );
