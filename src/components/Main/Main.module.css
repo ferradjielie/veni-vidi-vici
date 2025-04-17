@@ -1,42 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=EB+Garamond&display=swap');
 
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+}
 
 .header {
-    display: flex;
-    justify-content: center;   
-    align-items: center;       
-    height: 100vh;             
-    color: white;
-  }
-  .title {
-    font-weight: bold;
-    font-size: 4em;
-    margin: 0; 
-  }
+  text-align: center;
+}
 
-  .main {
-    display: flex;
-    justify-content: center;
-    align-items: center;   /* 👈 Centrage horizontal du texte */
-    flex-direction: column;
-    color: white;
-    font-size: 2em;
-    font-weight: 500;
-    text-align: center;
-         
-    font-family: 'EB Garamond', serif;
-    font-style: italic;    /* 👈 Pour un effet "citation élégante" */
-  }
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
 
-  .button {
-    font-size: 1.5em;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 5px;
-    border: solid 2px white;
-    background-color: white;
-    color: #5c0a0a;
-    padding: 12px;
-  }
+.main {
+  max-width: 800px;
+  text-align: center;
+}
 
- 
+.paragraph {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: white;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #333;
+}

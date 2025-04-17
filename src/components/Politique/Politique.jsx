@@ -1,10 +1,16 @@
 import styles from "./Politique.module.css"
 
 
-function Politique() {
+function Politique(props) {
     return (
         <div className={styles.container}>
-          <h2> Politique</h2>
+           
+          
+          
+        <span> Mot : {props.mot}</span>
+        <p>Traduction : {props.traduction}</p>
+        <p> Etymologie : {props.etymologie}</p>
+        <p> Contexte : {props.contexte}</p>
         </div>
     )
 }

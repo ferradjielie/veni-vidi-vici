@@ -2,6 +2,13 @@ import React from "react";
 import styles from "./Themes.module.css"; 
 import { Link } from 'react-router-dom';
 
+import monaLisa from '../../assets/monaLisa.jpg';
+
+
+
+
+
+
 function Themes() {
   return (
     <div className={styles.container}>
@@ -18,7 +25,10 @@ function Themes() {
             <button>Justice</button>
             <button>Économie</button>
             <button>Vie quotidienne</button>
-            <button>Art & Culture</button>
+            <div className={styles.card}>
+  <h3>Art & Culture</h3>
+  <img src={monaLisa} alt="Art & Culture" className={styles.cardImage} />
+</div>
             <button>Société</button>
             <button>Expressions célèbres</button>
       

@@ -1,3 +1,27 @@
-.container h2{
-    color: white;
+.container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 10px;
+   border: solid 1px #5c0a0a;
+   background: white;
+   font-size: 1.3em;
+   font-weight: 600;
+   color: #5c0a0a;
+
+
+
+   /*position: relative;
+  min-height: 100vh;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('../../assets/ciceron.jpg');
+  background-size: cover;
+  background-position: center;*/
 }
