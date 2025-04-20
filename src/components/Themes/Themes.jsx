@@ -12,6 +12,8 @@ import ciceron from '../../assets/ciceron.png';
 import expression from '../../assets/expression.jpg';
 import sociaty from '../../assets/sociaty.jpg';
 import family from '../../assets/family.jpg';
+import science from '../../assets/science.jpg';
+import statue from '../../assets/statue.jpg';
 
 function Themes() {
   return (
@@ -22,7 +24,7 @@ function Themes() {
       <div className={styles.cardsContainer}>
         <div className={styles.card}>
           <h3>Science</h3>
-          <img src={manOfVitruve} alt="Science" className={styles.cardImage} />
+          <img src={science} alt="Science" className={styles.cardImage} />
         </div>
 
         <div className={styles.card}>
@@ -69,16 +71,29 @@ function Themes() {
           <h3>Vie quotidienne</h3>
           <img src={family} alt="vie quotidienne" className={styles.cardImage} />
         </div>
+
+
+         
+        <div className={styles.card}>
+          <h3>Médecine</h3>
+          <img src={manOfVitruve} alt="medecine" className={styles.cardImage} />
+        </div>
+
+         <div className={styles.card}>
+          <h3>Mythologie et divinités</h3>
+          <img src={statue} alt="statue" className={styles.cardImage} />
+        </div>
+
+       
+    
+    
+      </div>
+     
       </div>
 
-      {/* Boutons restants pour les thèmes à venir */}
-      <div className={styles.button}>
-        <button>Société</button>
-        <button></button>
-        <button>Vie quotidienne</button>
-      </div>
-    </div>
-  );
+      
+     
+  )
 }
 
 export default Themes;

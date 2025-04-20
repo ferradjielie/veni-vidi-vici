@@ -59,6 +59,7 @@
     margin: 2rem auto;
     width: 260px;
     transition: 0.5s;
+    cursor: pointer;
     
     
   }
@@ -81,3 +82,5 @@
    border: solid 2px black;
   }
   
+
+ 
