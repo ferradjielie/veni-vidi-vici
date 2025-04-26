@@ -1,86 +1,130 @@
+/* Container Principal */
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-left: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .container h2 {
-    color: white;
-    font-size: 2em;
+  color: white;
+  font-size: 2em;
 }
 
+/* Bouton Explore */
 .button button {
-    flex-wrap: wrap;
-    margin-right: 10px;
-    margin-bottom: 40px;
-    font-size: 2.5em;
-    border-radius: 10px;
-    border: solid 2px #5c0a0a;
-    padding: 10px;
-    cursor: pointer;
-    color:  #5c0a0a;
-    transition: 0.4s;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  margin-bottom: 40px;
+  font-size: 2.5em;
+  border-radius: 10px;
+  border: solid 2px #5c0a0a;
+  padding: 10px;
+  cursor: pointer;
+  color: #5c0a0a;
+  transition: 0.4s;
 }
+
 .button button:hover {
-    background-color:#5c0a0a;
-    color: white;
-    border: solid 2px white;
-    transform: translateY(-8px)
+  background-color: #5c0a0a;
+  color: white;
+  border: solid 2px white;
+  transform: translateY(-8px);
 }
 
-
-
-
-
-
-
-
-
-
+/* Conteneur des Cards */
 .cardsContainer {
   display: flex;
-  flex-wrap: wrap; /* Permet aux cartes de se répartir sur plusieurs lignes si nécessaire */
-  gap: 2rem; /* Espace entre les cartes */
-  justify-content: center; /* Centre les cartes horizontalement */
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
   padding: 2rem;
 }
 
-
+/* Card */
 .card {
-    background-color: #111; /* un noir légèrement plus doux que #000 */
-    color: white;
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.797); /* plus subtil que blanc pur */
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    margin: 2rem auto;
-    width: 260px;
-    transition: 0.5s;
-    cursor: pointer;
-    
-    
-  }
-  
-  .card:hover {
-    transform: translateY(-7px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
-    background-color: white;
-    color: #5c0a0a;
-  }
-  
-  .cardImage {
-    width: 100%;
-    height: 400px;
-    border-radius: 10px;
-    border: solid 2px white;
-    object-fit: cover;
-  }
-  .cardImage:hover {
-   border: solid 2px black;
-  }
-  
+  background-color: #111;
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.797);
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin: 2rem auto;
+  width: 260px;
+  transition: 0.5s;
+  cursor: pointer;
+}
 
- 
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  color: #5c0a0a;
+}
+
+/* Image de la Card */
+.cardImage {
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  border: solid 2px white;
+  object-fit: cover;
+}
+
+.cardImage:hover {
+  border: solid 2px black;
+}
+
+/* ------------------- RESPONSIVE DESIGN ------------------- */
+
+/* Tablette */
+@media (max-width: 1024px) {
+  .container h2 {
+    font-size: 2.5em;
+  }
+
+  .button button {
+    font-size: 3em;
+    padding: 15px;
+  }
+
+  .card {
+    width: 300px;
+  }
+
+  .card h3 {
+    font-size: 1.8em; /* taille du titre dans la carte */
+  }
+
+  .card p {
+    font-size: 1.3em; /* taille du texte dans la carte */
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .container h2 {
+    font-size: 2.2em;
+  }
+
+  .button button {
+    font-size: 2.8em;
+    padding: 15px;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .card h3 {
+    font-size: 1.6em;
+  }
+
+  .card p {
+    font-size: 1.2em;
+  }
+}

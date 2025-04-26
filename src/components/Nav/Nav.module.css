@@ -1,31 +1,57 @@
 .navContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #1a1a1a;
-    color: white;
-  }
-  
+  width: 100%;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.navInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* 👈 C'est ici qu'on limite la taille */
+  margin: 0 auto; /* 👈 Centre tout proprement */
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks a {
+  margin-right: 3rem;
+  color: white;
+  text-decoration: none;
+}
+
+.navLinks a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 300px) {
   .logo h1 {
-    margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem; /* ou plus selon ce que tu veux */
   }
-  
-  .navLinks {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
+
   .navLinks a {
-    color: white;
-    text-decoration: none;
+    font-size: 1.3rem; /* agrandir aussi les liens */
   }
-  
-  .navLinks a:hover {
-    text-decoration: underline;
+}
+
+@media (min-width: 800px) {
+  .logo h1 {
+    font-size: 2rem; /* ou plus selon ce que tu veux */
   }
-  
+
+  .navLinks a {
+    font-size: 1.8rem; /* agrandir aussi les liens */
+  }
+}

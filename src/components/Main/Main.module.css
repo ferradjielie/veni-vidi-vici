@@ -24,6 +24,7 @@
 }
 
 .paragraph {
+  text-align: center;
   margin-bottom: 1rem;
   font-size: 1.4rem;
   line-height: 1.6;
@@ -44,20 +45,19 @@
 
 
 .card {
-    background-color: #ffffff; /* un noir légèrement plus doux que #000 */
-    color: #5c0a0a;
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.797); /* plus subtil que blanc pur */
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    margin: 2rem auto;
-    width: 460px;
-    transition: 0.5s;
-    cursor: pointer;
-    
-    
-  }
+  background-color: #ffffff;
+  color: #5c0a0a;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.797);
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin: 2rem auto;
+  width: 100%; /* ← important pour qu’elle prenne 100% de son conteneur */
+  max-width: 400px; /* ← limite la taille sur grand écran */
+  transition: 0.5s;
+  cursor: pointer;
+}
   
   .card:hover {
     transform: translateY(-7px);
@@ -96,4 +96,20 @@
 
 .button:hover {
   background-color: #333;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .paragraph {
+    font-size: 1.8rem; /* un peu plus gros qu'avant */
+  }
+
+  .card h3 {
+    font-size: 1.8rem; /* grossit le titre dans la carte */
+  }
+
+  .button {
+    font-size: 1.6rem; /* le texte plus gros */
+    padding: 1rem 2rem; /* plus d'espace à l'intérieur du bouton */
+    width: 250px; /* bouton un peu plus large */
+  }
 }
