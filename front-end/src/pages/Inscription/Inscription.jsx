@@ -1,32 +1,50 @@
 import React, { useState } from "react";
+import axios from "axios";
 import styles from "./Inscription.module.css";
 
 function Inscription() {
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
   const [erreur, setErreur] = useState("");
+  const [succes, setSucces] = useState("");
 
-  // Fonction de validation CNIL
   const motDePasseValide = (mdp) => {
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{14,}$/;
     return regex.test(mdp);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Vérification du mot de passe
     if (!motDePasseValide(motDePasse)) {
       setErreur(
         "Le mot de passe doit contenir au minimum 14 caractères, une majuscule, une minuscule et un chiffre."
       );
+      setSucces("");
       return;
     }
 
-    setErreur(""); // Réinitialise l'erreur si OK
+    setErreur("");
 
-    // Envoie au backend (à implémenter avec axios par ex.)
-    console.log("Inscription envoyée :", { email, motDePasse });
+    try {
+      const response = await axios.post("http://localhost:5000/api/inscription", {
+        email,
+        motDePasse,
+      });
+
+      if (response.status === 201) {
+        setSucces("Compte créé avec succès !");
+        setEmail("");
+        setMotDePasse("");
+      }
+    } catch (err) {
+      if (err.response?.data?.error) {
+        setErreur(err.response.data.error);
+      } else {
+        setErreur("Une erreur est survenue. Veuillez réessayer.");
+      }
+      setSucces("");
+    }
   };
 
   return (
@@ -54,6 +72,7 @@ function Inscription() {
         </div>
 
         {erreur && <p className={styles.erreur}>{erreur}</p>}
+        {succes && <p className={styles.succes}>{succes}</p>}
 
         <button type="submit">S'inscrire</button>
       </form>
