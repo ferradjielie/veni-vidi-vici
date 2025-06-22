@@ -9,7 +9,7 @@ function Nav() {
       </div>
   
       <ul className={styles.navLinks}>
-        <li><a href="#">Se connecter</a></li>
+        <li><a href="connexion">Se connecter</a></li>
       </ul>
     </div>
   </nav>

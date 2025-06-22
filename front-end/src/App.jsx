@@ -6,6 +6,8 @@ import Main from './pages/Main/Main'
 import Themes from './pages/Themes/Themes';
 
 import Politique from './pages/Politique/Politique';
+import Connexion from './pages/Connexion/Connexion';
+import Inscription from './pages/Inscription/Inscription';
 
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/themes" element={<Themes/>} />
         <Route path="/politique" element={<Politique/>} />
+        <Route path="/connexion" element={<Connexion/>} />
+        <Route path="/inscription" element={<Inscription/>} />
+
       
       </Routes>
     </Router>
