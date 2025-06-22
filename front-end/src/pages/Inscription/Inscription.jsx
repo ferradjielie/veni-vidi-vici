@@ -4,11 +4,29 @@ import styles from "./Inscription.module.css";
 function Inscription() {
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
+  const [erreur, setErreur] = useState("");
+
+  // Fonction de validation CNIL
+  const motDePasseValide = (mdp) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{14,}$/;
+    return regex.test(mdp);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ici, tu enverras les données au backend via axios (plus tard)
-    console.log("Inscription :", { email, motDePasse });
+
+    // ✅ Vérification du mot de passe
+    if (!motDePasseValide(motDePasse)) {
+      setErreur(
+        "Le mot de passe doit contenir au minimum 14 caractères, une majuscule, une minuscule et un chiffre."
+      );
+      return;
+    }
+
+    setErreur(""); // Réinitialise l'erreur si OK
+
+    // Envoie au backend (à implémenter avec axios par ex.)
+    console.log("Inscription envoyée :", { email, motDePasse });
   };
 
   return (
@@ -34,6 +52,8 @@ function Inscription() {
             required
           />
         </div>
+
+        {erreur && <p className={styles.erreur}>{erreur}</p>}
 
         <button type="submit">S'inscrire</button>
       </form>
