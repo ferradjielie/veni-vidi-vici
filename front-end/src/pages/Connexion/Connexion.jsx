@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./Connexion.module.css";
+import { useNavigate } from "react-router-dom"; // pour redirection
 
 function Connexion() {
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
   const [erreur, setErreur] = useState("");
+  const navigate = useNavigate(); // pour redirection
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +20,20 @@ function Connexion() {
       });
 
       console.log("Connexion réussie :", response.data);
-      // Ici tu peux rediriger l’utilisateur ou stocker le token, etc.
+
+      const token = response.data.token;
+      if (token) {
+        // Stockage du token dans localStorage
+        localStorage.setItem("token", token);
+
+        // (optionnel) Stocker l'utilisateur aussi si besoin :
+        // localStorage.setItem("utilisateur", JSON.stringify(response.data.utilisateur));
+
+        // Redirection après connexion
+        navigate("/themes"); // à adapter selon ta route réelle
+      } else {
+        setErreur("Token manquant dans la réponse serveur.");
+      }
     } catch (error) {
       console.error("Erreur connexion :", error);
       if (error.response && error.response.data && error.response.data.error) {

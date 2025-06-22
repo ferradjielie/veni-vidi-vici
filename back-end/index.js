@@ -1,11 +1,16 @@
 // back-end/index.js
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const db = require('./db'); // ← la connexion est lancée ici
 
 const app = express();
 const PORT = 5000;
+const JWT_SECRET = process.env.JWT_SECRET;
+
 
 app.use(cors());
 app.use(express.json());
@@ -100,9 +105,16 @@ app.post('/api/connexion', (req, res) => {
         return res.status(401).json({ error: 'Email ou mot de passe incorrect' });
       }
 
-      // ✅ Ici tu ajouteras le token JWT plus tard
+      // Génération du token JWT
+      const token = jwt.sign(
+        { id: utilisateur.id_utilisateur, email: utilisateur.email, role: utilisateur.role },
+        JWT_SECRET,
+        { expiresIn: '1h' }
+      );
+
       res.json({
         message: 'Connexion réussie',
+        token, // On renvoie le token au client
         utilisateur: {
           id: utilisateur.id_utilisateur,
           email: utilisateur.email,
