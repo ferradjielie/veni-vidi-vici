@@ -1,23 +1,20 @@
-require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 
+const authRoutes = require('./routes/auth.routes');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
-// Middlewares globaux
 app.use(cors());
 app.use(express.json());
 
-// Import du routeur principal
-const apiRoutes = require('./routes/index');
-app.use('/api', apiRoutes);
+// Tes autres routes publiques ici (exemple: /api/themes/politique)
 
-// Route racine test (facultative)
-app.get('/', (req, res) => {
-  res.send('API Veni Vidi Vici en ligne ✅');
-});
+// Utilise les routes d'authentification
+app.use('/api', authRoutes);
 
+// Démarrage du serveur
 app.listen(PORT, () => {
   console.log(`🚀 Serveur backend lancé sur http://localhost:${PORT}`);
 });
