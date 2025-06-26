@@ -8,7 +8,7 @@ import Themes from './pages/Themes/Themes';
 import Politique from './pages/Politique/Politique';
 import Connexion from './pages/Connexion/Connexion';
 import Inscription from './pages/Inscription/Inscription';
-
+import LogoutButton from './components/Logout/LogoutButton';
 
 function App() {
   
