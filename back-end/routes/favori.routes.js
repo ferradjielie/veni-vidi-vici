@@ -5,10 +5,10 @@ const auth = require("../middleware/auth.middleware");
 
 router.get("/favoris", auth, favoriController.getFavoris);
 router.post("/favoris", auth, favoriController.ajouterFavori);
-router.put("/favoris/:id_mot", authMiddleware, async (req, res) => {
+router.put("/favoris/:id_mot", auth, async (req, res) => {
   const id_mot = req.params.id_mot;
-  const { notes } = req.body; // <- on récupère 'notes' ici
-  const id_utilisateur = req.user.id; // injecté via authMiddleware
+  const { notes } = req.body;
+  const id_utilisateur = req.utilisateur.id; // ✅ Corrigé
 
   try {
     const [result] = await db.execute(
@@ -26,6 +26,5 @@ router.put("/favoris/:id_mot", authMiddleware, async (req, res) => {
     res.status(500).json({ message: "Erreur serveur." });
   }
 });
-
 
 module.exports = router;
