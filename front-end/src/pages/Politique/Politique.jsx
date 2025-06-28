@@ -6,17 +6,23 @@ function Politique() {
   const [mots, setMots] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(function () {
-    axios.get("http://localhost:5000/api/themes/politique") // à adapter selon ta route
-      .then(function (response) {
-        setMots(response.data);
-        setLoading(false);
-      })
-      .catch(function (error) {
-        console.error("Erreur lors de la récupération des mots :", error);
-        setLoading(false);
-      });
-  }, []);
+  useEffect(() => {
+  const token = localStorage.getItem("token");
+
+  axios.get("http://localhost:5000/api/themes/politique", {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then((response) => {
+    setMots(response.data);
+    setLoading(false);
+  })
+  .catch((error) => {
+    console.error("Erreur lors de la récupération des mots :", error);
+    setLoading(false);
+  });
+}, []);
 
   if (loading) {
     return <p>Chargement...</p>;
