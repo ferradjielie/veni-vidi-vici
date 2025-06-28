@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Politique.module.css";
+import { isAuthenticated } from "../../utils/auth";
 import axios from "axios";
 
 function Politique() {
@@ -24,10 +25,24 @@ function Politique() {
     });
   }, []);
 
-  // Fonction à exécuter quand on clique sur le bouton
-  const ajouterAuxFavoris = (mot) => {
-    console.log("Mot ajouté aux favoris :", mot);
-    // Tu pourras ici faire un appel à une future route /api/favoris pour l’enregistrer côté back
+  const ajouterAuxFavoris = async (id_mot) => {
+    const token = localStorage.getItem("token");
+
+    try {
+      await axios.post(
+        "http://localhost:5000/api/favoris",
+        { id_mot },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Mot ajouté aux favoris !");
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du mot aux favoris :", error);
+      alert("Une erreur est survenue.");
+    }
   };
 
   if (loading) {
@@ -45,7 +60,11 @@ function Politique() {
             <h2>{mot.terme}</h2>
             <p><strong>Étymologie :</strong> {mot.etymologie}</p>
             <p><strong>Contexte :</strong> {mot.contexte}</p>
-            <button onClick={() => ajouterAuxFavoris(mot)}>Ajouter aux favoris</button>
+            {isAuthenticated() && (
+              <button onClick={() => ajouterAuxFavoris(mot.id_mot)}>
+                Ajouter aux favoris
+              </button>
+            )}
           </div>
         ))
       )}

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Favori.module.css";
 import axios from "axios";
+import styles from "./Favori.module.css";
 
 function Favori() {
   const [favoris, setFavoris] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -14,50 +13,44 @@ function Favori() {
         Authorization: `Bearer ${token}`,
       },
     })
-    .then((res) => {
-      setFavoris(res.data);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error("Erreur lors du chargement des favoris :", err);
-      setLoading(false);
-    });
+      .then((res) => setFavoris(res.data))
+      .catch((err) => console.error(err));
   }, []);
 
-  if (loading) return <p>Chargement...</p>;
+  const updateNotes = async (id_mot, notes) => {
+    const token = localStorage.getItem("token");
+    try {
+      await axios.put(
+        `http://localhost:5000/api/favoris/${id_mot}`,
+        { notes },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Notes enregistrées !");
+    } catch (error) {
+      console.error("Erreur mise à jour notes :", error);
+    }
+  };
 
   return (
     <div className={styles.container}>
-      <h1>Mes favoris</h1>
-      {favoris.length === 0 ? (
-        <p>Vous n'avez encore aucun mot en favori.</p>
-      ) : (
-        favoris.map((mot) => (
-          <div key={mot.id_mot} className={styles.card}>
-            <h2>{mot.terme}</h2>
-            <p><strong>Étymologie :</strong> {mot.etymologie}</p>
-            <p><strong>Contexte :</strong> {mot.contexte}</p>
+      <h1>Mes Favoris</h1>
+      {favoris.map((mot) => (
+        <div key={mot.id_mot} className={styles.card}>
+          <h2>{mot.terme}</h2>
+          <p><strong>Étymologie :</strong> {mot.etymologie}</p>
+          <p><strong>Contexte :</strong> {mot.contexte}</p>
 
-            <textarea
-              placeholder="Ajoutez votre propre commentaire..."
-              defaultValue={mot.description_perso || ""}
-              onBlur={(e) => {
-                axios.put(
-                  `http://localhost:5000/api/favoris/${mot.id_mot}`,
-                  { description_perso: e.target.value },
-                  {
-                    headers: {
-                      Authorization: `Bearer ${token}`,
-                    },
-                  }
-                ).catch((err) => {
-                  console.error("Erreur en sauvegardant la description :", err);
-                });
-              }}
-            />
-          </div>
-        ))
-      )}
+          <textarea
+            placeholder="Ajoutez vos notes personnelles..."
+            defaultValue={mot.notes || ""}
+            onBlur={(e) => updateNotes(mot.id_mot, e.target.value)}
+          />
+        </div>
+      ))}
     </div>
   );
 }
