@@ -4,6 +4,7 @@ import styles from "./Favori.module.css";
 
 function Favori() {
   const [favoris, setFavoris] = useState([]);
+  const [editedNotes, setEditedNotes] = useState({});
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -17,8 +18,14 @@ function Favori() {
       .catch((err) => console.error(err));
   }, []);
 
-  const updateNotes = async (id_mot, notes) => {
+  const handleNoteChange = (id_mot, value) => {
+    setEditedNotes({ ...editedNotes, [id_mot]: value });
+  };
+
+  const updateNotes = async (id_mot) => {
     const token = localStorage.getItem("token");
+    const notes = editedNotes[id_mot] || "";
+
     try {
       await axios.put(
         `http://localhost:5000/api/favoris/${id_mot}`,
@@ -47,8 +54,9 @@ function Favori() {
           <textarea
             placeholder="Ajoutez vos notes personnelles..."
             defaultValue={mot.notes || ""}
-            onBlur={(e) => updateNotes(mot.id_mot, e.target.value)}
+            onChange={(e) => handleNoteChange(mot.id_mot, e.target.value)}
           />
+          <button onClick={() => updateNotes(mot.id_mot)}>Enregistrer</button>
         </div>
       ))}
     </div>

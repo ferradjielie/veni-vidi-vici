@@ -4,10 +4,10 @@ const db = require('../db')
 const Favori = {
   getAllByUser: (userId) => {
     const sql = `
-      SELECT m.id_mot, m.terme, m.etymologie, m.contexte, f.description_perso
-      FROM Favori f
-      JOIN Mot m ON f.id_mot = m.id_mot
-      WHERE f.id_user = ?
+      SELECT m.id_mot, m.terme, m.etymologie, m.contexte, f.notes
+      FROM favori f
+      JOIN mot m ON f.id_mot = m.id_mot
+      WHERE f.id_utilisateur = ?
     `;
     return new Promise((resolve, reject) => {
       db.query(sql, [userId], (err, result) => {
@@ -18,7 +18,7 @@ const Favori = {
   },
 
   add: (userId, motId) => {
-    const sql = `INSERT IGNORE INTO Favori (id_user, id_mot) VALUES (?, ?)`;
+    const sql = `INSERT IGNORE INTO favori (id_utilisateur, id_mot) VALUES (?, ?)`;
     return new Promise((resolve, reject) => {
       db.query(sql, [userId, motId], (err, result) => {
         if (err) reject(err);
@@ -28,7 +28,7 @@ const Favori = {
   },
 
   updateDescription: (userId, motId, description) => {
-    const sql = `UPDATE Favori SET description_perso = ? WHERE id_user = ? AND id_mot = ?`;
+    const sql = `UPDATE favori SET notes = ? WHERE id_utilisateur = ? AND id_mot = ?`;
     return new Promise((resolve, reject) => {
       db.query(sql, [description, userId, motId], (err, result) => {
         if (err) reject(err);

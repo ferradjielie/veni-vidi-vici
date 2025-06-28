@@ -27,6 +27,8 @@ function Politique() {
 
   const ajouterAuxFavoris = async (id_mot) => {
     const token = localStorage.getItem("token");
+    
+    console.log("Mon token:", token); // <- JUSTE CETTE LIGNE AJOUTÉE
 
     try {
       await axios.post(
