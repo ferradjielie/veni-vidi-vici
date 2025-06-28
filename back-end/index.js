@@ -16,7 +16,7 @@ app.use(express.json());
 // Routes
 app.use('/api', authRoutes);
 app.use('/api', themeRoutes); 
-app.use("/api", favoriRoutes);
+app.use("/api", favoriRoutes); 
 
 // Démarrage du serveur
 app.listen(PORT, () => {
