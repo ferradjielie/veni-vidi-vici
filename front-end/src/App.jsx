@@ -4,6 +4,7 @@ import './App.css'
 import Nav from './components/Nav/Nav';
 import Main from './pages/Main/Main'
 import Themes from './pages/Themes/Themes';
+import Favori from './pages/Favori/Favori';
 
 import Politique from './pages/Politique/Politique';
 import Connexion from './pages/Connexion/Connexion';
@@ -25,6 +26,7 @@ function App() {
         <Route path="/politique" element={<Politique/>} />
         <Route path="/connexion" element={<Connexion/>} />
         <Route path="/inscription" element={<Inscription/>} />
+        <Route path="/favori" element={<Favori/>} />
 
       
       </Routes>
