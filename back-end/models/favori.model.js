@@ -1,5 +1,5 @@
 // models/favori.model.js
-const db = require('../db')
+const db = require('../db');
 
 const Favori = {
   getAllByUser: (userId) => {

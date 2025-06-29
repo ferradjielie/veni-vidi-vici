@@ -31,13 +31,44 @@
   line-height: 1.4;
 }
 
+/* Nouveau style pour le textarea */
+.card textarea {
+  width: 90%;
+  min-height: 120px;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  margin-top: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fafafa;
+}
+
+.card textarea:focus {
+  outline: none;
+  border-color: #260808;
+  box-shadow: 0 0 0 3px rgba(38, 8, 8, 0.1);
+  background-color: #ffffff;
+}
+
+.card textarea:hover {
+  border-color: #888;
+}
+
+.card textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
 button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #260808;
   color: white;
   border: none;
-  
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
