@@ -8,15 +8,15 @@ function Favori() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
-    axios
-      .get("http://localhost:5000/api/favoris", {
+       axios.get("http://localhost:5000/api/favoris", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
         setFavoris(res.data);
+
+
         // initialise les notes dès qu'on les récupère
         const initialNotes = {};
         res.data.forEach((mot) => {
@@ -36,6 +36,7 @@ function Favori() {
     const notes = editedNotes[id_mot];
 
     try {
+      
       await axios.put(
         `http://localhost:5000/api/favoris/${id_mot}`,
         { notes },

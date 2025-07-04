@@ -3,6 +3,7 @@ const db = require('../db');
 
 const Favori = {
   getAllByUser: (userId) => {
+    
     const sql = `
       SELECT m.id_mot, m.terme, m.etymologie, m.contexte, f.notes
       FROM favori f

@@ -14,12 +14,8 @@ exports.getFavoris = async (req, res) => {
 exports.ajouterFavori = async (req, res) => {
   const { id_mot } = req.body;
   try {
-    console.log("=== DEBUG ===");
-    console.log("req.utilisateur:", req.utilisateur);
-    console.log("id_mot:", id_mot);
-    
-    await Favori.add(req.utilisateur.id, id_mot);
-    res.status(201).json({ message: "Mot ajouté aux favoris" });
+      await Favori.add(req.utilisateur.id, id_mot);
+      res.status(201).json({ message: "Mot ajouté aux favoris" });
   } catch (error) {
     console.log("ERREUR ajouterFavori:", error.message);
     res.status(500).json({ error: "Erreur lors de l'ajout." });
